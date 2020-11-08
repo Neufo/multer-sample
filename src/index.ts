@@ -13,7 +13,7 @@ const storage = multer.diskStorage({
     },
 });
 
-var upload = multer({ dest: "uploads/", storage: storage });
+var upload = multer({ storage: storage });
 const app = express();
 
 app.use(express.static("public"));
@@ -21,7 +21,6 @@ app.use(express.static("public"));
 app.post("/icons", upload.single("icon"), function (req, res, next) {
     res.status(200).send();
 });
-
 
 app.listen(3000, "localhost", () => {
     console.log("server start.");
